@@ -1,6 +1,5 @@
 
 module.exports = function calculateHanoi(disksNumber, turnsSpeed ) {
-  throw new CustomError('Not implemented');
     let turns = 0;
     let seconds;
     for (let i = 1; i <= diskNumber; i++) {
