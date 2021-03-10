@@ -1,12 +1,25 @@
-module.exports = function createDreamTeam(members ) {
+module.exports = function createDreamTeam(members) {
+  if (members == undefined) {
+    return false;
+  }
   let teame_name = '';
   let name;
-  let sort_name = members.sort();
+  let sortName = [];
+  let answer;
   for (let i = 0; i < members.length; i++) {
+    if (typeof(members[i]) === 'string' ) {
     name = members[i];
-    if (typeof(name) === 'string') {
-      teame_name = teame_name + name[0];
-    }
+   for ( let k = 0; k < name.length; k++) {
+     if (name[k] != ' ') {
+      teame_name = teame_name + name[k];
+     }
+   }
+     sortName.push(teame_name[0]);
+    teame_name = '';
   }
-  return teame_name.toUpperCase();
-};
+}
+  answer = sortName.sort();
+  answer = sortName.join('');
+
+  return answer.toUpperCase();
+}

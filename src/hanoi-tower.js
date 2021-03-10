@@ -1,4 +1,5 @@
 
+
 module.exports = function calculateHanoi(disksNumber, turnsSpeed ) {
     let turns = 0;
     let seconds;
