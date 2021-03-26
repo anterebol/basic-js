@@ -4,7 +4,10 @@ module.exports = function getSeason(date) {
 if (date == undefined) {
   return 'Unable to determine the time of year!';
 }
+
   const time = new Date (date);
+  if ( Object.prototype.toString.call(date) != '[object Date]')  {
+    throw new Error('THROWN');}
   let x = time.getMonth();
   if (x === 1 || x === 0 || x === 11) {
     return 'winter';
@@ -18,8 +21,4 @@ if (date == undefined) {
   else if ( x > 7 && x <= 10) {
     return 'autumn';
   }
-  else { 
-    throw 'THROWN';
-  }
-    return false;
   }

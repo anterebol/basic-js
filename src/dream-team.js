@@ -8,7 +8,7 @@ module.exports = function createDreamTeam(members) {
   let answer;
   for (let i = 0; i < members.length; i++) {
     if (typeof(members[i]) === 'string' ) {
-    name = members[i];
+    name = members[i].toUpperCase();
    for ( let k = 0; k < name.length; k++) {
      if (name[k] != ' ') {
       teame_name = teame_name + name[k];
@@ -21,5 +21,5 @@ module.exports = function createDreamTeam(members) {
   answer = sortName.sort();
   answer = sortName.join('');
 
-  return answer.toUpperCase();
+  return answer;
 }

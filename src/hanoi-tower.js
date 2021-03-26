@@ -1,14 +1,17 @@
 
 
-module.exports = function calculateHanoi(disksNumber, turnsSpeed ) {
-    let turns = 0;
+module.exports = function calculateHanoi(diskNumber, turnsSpeed ) {
+    let turn = 0;
     let seconds;
+    let answer = {};
     for (let i = 1; i <= diskNumber; i++) {
-      turns = (2 * turns) + 1;
+      turn = (2 * turn) + 1;
     }
-    seconds = turns * (3600 / turnsSpeed);
+    seconds = turn * (3600 / turnsSpeed);
     seconds = Math.floor(seconds);
-    return (`turns: ${turns}, seconds: ${seconds}`)
-  };
+    answer.turns = turn;
+    answer.seconds = seconds;
+    return answer;
+  }
   
 
