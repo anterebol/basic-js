@@ -1,5 +1,5 @@
 module.exports = function dateSample(sampleActivity)  {
-  if (sampleActivity === 'undefiend' || sampleActivity > 100 || sampleActivity < 0) {
+  if (sampleActivity === 'undefiend' || sampleActivity < 0 || typeof(sampleActivity) != 'string') {
     return false;
   }
   const MODERN_ACTIVITY= 15; 

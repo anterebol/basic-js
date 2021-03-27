@@ -1,4 +1,3 @@
-
 const chainMaker = {
   chain : [],
   answer : '',
@@ -15,42 +14,47 @@ return 0;
    return this.count++;
   },
 addLink(value)  {
-  if (value === undefined) {
-       if (this.chain == '') {
-  value = `(  )`;
-   this.chain+= value;
-   return this;
-   }
-   else {
-     value = `~~(  )`;
-   this.chain+= value;
-   return this;
-   }
-  }
-  else {
-   if (this.chain == '') {
+ if (this.chain[0] == undefined) {
   value = `( ${value} )`;
-   this.chain+= value;
+   this.chain.push(value);
    return this;
    }
    else {
      value = `~~( ${value} )`;
-   this.chain+= value;
+   this.chain.push(value);
    return this;
-   }}
+   }
 },
   removeLink(position) {
-    this.chain = this.chain.replace(`( ${position} )~~`, '');
-    this.chain = this.chain.replace(`~~( ${position} )`, '');
-    this.chain = this.chain.replace(`( ${position} )`, '');
+    if(position < 0) {
+      throw new Error();
+    }
+    let n = position - 1 ;
+    this.chain.splice(n, 1);
     return this;
 },
   reverseChain() {
-    
+    let d = [];
+    if (this.chain.length > 0) {
+    this.chain = this.chain.join('');
+    this.chain = this.chain.split('~~');
+    this.chain = this.chain.reverse();
+    for (let i = 0; i < this.chain.length; i++) {
+    if (i != this.chain.length-1) {
+    d.push(this.chain[i]);
+    d.push('~~');
+      }
+      else {
+        d.push(this.chain[i]);
+     }
+    }
+    }
+    this.chain = d;
+    return this;
   },
   finishChain () {
-    this.answer = this.chain;
-    this.chain = undefined;
+    this.answer = this.chain.join('');
+    this.chain = [];
     return this.answer;
   },
 };
