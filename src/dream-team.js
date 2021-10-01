@@ -1,19 +1,25 @@
-import { NotImplementedError } from '../extensions/index.js';
+export default function createDreamTeam(members) {
+  if (members == undefined) {
+    return false;
+  }
+  let teame_name = '';
+  let name;
+  let sortName = [];
+  let answer;
+  for (let i = 0; i < members.length; i++) {
+    if (typeof(members[i]) === 'string' ) {
+    name = members[i].toUpperCase();
+   for ( let k = 0; k < name.length; k++) {
+     if (name[k] != ' ') {
+      teame_name = teame_name + name[k];
+     }
+   }
+     sortName.push(teame_name[0]);
+    teame_name = '';
+  }
+}
+  answer = sortName.sort();
+  answer = sortName.join('');
 
-/**
- * Create name of dream team based on the names of its members
- *  
- * @param {Array} members names of the members 
- * @return {String | Boolean} name of the team or false
- * in case of incorrect members
- *
- * @example
- * 
- * createDreamTeam(['Matt', 'Ann', 'Dmitry', 'Max']) => 'ADMM'
- * createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null]) => 'LOO'
- *
- */
-export default function createDreamTeam(/* members */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+  return answer;
 }
