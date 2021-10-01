@@ -15,7 +15,22 @@ import { NotImplementedError } from '../extensions/index.js';
  * the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
  *
  */
-export default function renameFiles(/* names */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function renameFiles(names) {
+  let i = 0;
+  let n = -1;
+  let k = 0;
+  for (i = 0; i < names.length; i++) {
+    for (k = 0; k < names.length; k++) {
+      if (names[i] === names[k]) {
+        n += 1;
+        if (n > 0) {
+          // eslint-disable-next-line no-param-reassign
+          names[k] = `${names[k]}(${n})`;
+        }
+      }
+    }
+    n = -1;
+  }
+  return names;
 }
+
